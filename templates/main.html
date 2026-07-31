@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Finance Manager{% endblock %}
+
+{% block content %}
+    <!-- Приветственный баннер -->
+    {% if not user.is_authenticated %}
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ title }}</h1>
+            <p class="col-md-8 fs-4">{{ content }}</p>
+            <a href="{% url "main:login" %}" class="button">Начать</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ title }}</h1>
+            <p class="col-md-8 fs-4">{{ content }}</p>
+            <a href="{% url "menu:menu" %}" class="button">Начать</a>
+        </div>
+    </div>
+    <!-- Карточки с краткой статистикой -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Доходы</h5>
+                    <p class="card-text display-6">{{ total_income }} ₽</p>
+                    <small>За все время</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-danger">
+                <div class="card-body">
+                    <h5 class="card-title">Расходы</h5>
+                    <p class="card-text display-6">{{ total_expense }} ₽</p>
+                    <small>За все время</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Баланс</h5>
+                    <p class="card-text display-6">{{ total_balance }} ₽</p>
+                    <small>За все время</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

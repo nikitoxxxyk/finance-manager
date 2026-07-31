@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Главное меню{% endblock %}
+
+{% block content %}
+    <!-- Приветственный баннер -->
+    {% if user.is_authenticated %}
+	
+	<div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ title_trans }}</h1>
+            <p class="col-md-8 fs-4">{{ content_trans }}</p>
+            <a href="{% url "menu:transaction_add" %}" class="button">Добавить транзакцию ➕</a>
+        </div>
+    </div>
+
+	<!-- Добавление транзакции -->
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ title_budget }}</h1>
+            <p class="col-md-8 fs-4">{{ content_budget }}</p>
+            <a href="{% url "main:login" %}" class="button">Установить бюджет ✔️</a>
+        </div>
+    </div>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ title_cat }}</h1>
+            <p class="col-md-8 fs-4">{{ content_cat }}</p>
+            <a href="{% url "main:login" %}" class="button">Добавить категорию ➕</a>
+        </div>
+    </div>
+
+        <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ title_debt }}</h1>
+            <p class="col-md-8 fs-4">{{ content_debt }}</p>
+            <a href="{% url "main:login" %}" class="button">Добавить долг ➕</a>
+        </div>
+
+    </div>
+
+        <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ title_account }}</h1>
+            <p class="col-md-8 fs-4">{{ content_account }}</p>
+            <a href="{% url "main:login" %}" class="button">Добавить счет ➕</a>
+        </div>
+    </div>
+
+
+
+    <!-- Последние операции -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Последние операции</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Пока нет операций. Добавьте первую!</p>
+                    <!-- Здесь потом будет таблица с транзакциями -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

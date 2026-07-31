@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Категории{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>📂 Мои категории</h2>
+    
+    {% if categories %}
+        <ul class="list-group">
+            {% for category in categories %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ category.title }}
+                    <span class="badge bg-primary rounded-pill">
+                        {{ category.transaction_set.count }} транз.
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="alert alert-info">
+            У вас пока нет категорий. <a href="{% url 'menu:category_add' %}">Создайте первую</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

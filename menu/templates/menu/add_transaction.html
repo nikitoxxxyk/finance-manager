@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Добавление транзакции{% endblock %}
+
+{% block content %}
+    <!-- Приветственный баннер -->
+    {% comment %} {% if user.is_authenticated %} {% endcomment %}
+	
+	<div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">{{ title }}</h1>
+            <p class="col-md-8 fs-4">{{ content }}</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+            
+            <button type="submit" class="btn btn-success">Добавить транзакцию ➕</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Последние операции -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Последние операции</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Пока нет операций. Добавьте первую!</p>
+                    <!-- Здесь потом будет таблица с транзакциями -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %} {% endif %} {% endcomment %}
+{% endblock %}
